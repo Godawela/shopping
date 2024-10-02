@@ -12,13 +12,13 @@ const Cart = ({ cartItems, removeFromCart }) => {
         <ul>
           {cartItems.map(item => (
             <li key={item.id}>
-              {item.name} - ${item.price}
+              {item.name} - Rs.{item.price}
               <button onClick={() => removeFromCart(item)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
-      <h3>Total: ${totalPrice}</h3>
+      <h3>Total: Rs.{totalPrice}</h3>
     </div>
   );
 };

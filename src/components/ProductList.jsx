@@ -1,9 +1,9 @@
 import React from "react";
 
 const products = [
-  { id: 1, name: "Laptop", price: 999 },
-  { id: 2, name: "Smartphone", price: 699 },
-  { id: 3, name: "Headphones", price: 199 },
+  { id: 1, name: "Laptop", price: 100000 },
+  { id: 2, name: "Smartphone", price: 200000 },
+  { id: 3, name: "Headphones", price: 5000 },
 ];
 
 const ProductList = ({ addToCart }) => {
@@ -13,7 +13,7 @@ const ProductList = ({ addToCart }) => {
       <ul>
         {products.map(product => (
           <li key={product.id}>
-            {product.name} - ${product.price}
+            {product.name} - Rs.{product.price}
             <button onClick={() => addToCart(product)}>Add to Cart</button>
           </li>
         ))}
