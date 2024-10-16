@@ -39,6 +39,12 @@ const App = () => {
     }
   };
 
+  // Clear cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  
   return (
     <div className="app">
       {loading && (
@@ -49,7 +55,7 @@ const App = () => {
       <Header />
       <div style={{ display: "flex", justifyContent: "space-around", padding: "20px" }}>
         <ProductList addToCart={addToCart} />
-        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} clearCart={clearCart} />
       </div>
 
       
