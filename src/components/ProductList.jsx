@@ -7,11 +7,14 @@ const products = [
 ];
 
 const ProductList = ({ addToCart }) => {
-  const [addedProducts, setAddedProducts] = useState([]);
+  const [productQuantities, setProductQuantities] = useState({});
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    setAddedProducts([...addedProducts, product.id]);
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [product.id]: (prevQuantities[product.id] || 0) + 1,
+    }));
   };
 
   return (
@@ -32,19 +35,16 @@ const ProductList = ({ addToCart }) => {
             <p>Price: Rs. {product.price}</p>
             <button
               onClick={() => handleAddToCart(product)}
-              disabled={addedProducts.includes(product.id)}
               style={{
                 padding: "10px 15px",
-                backgroundColor: addedProducts.includes(product.id)
-                  ? "#ccc"
-                  : "#007bff",
+                backgroundColor: "#007bff",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
-                cursor: addedProducts.includes(product.id) ? "not-allowed" : "pointer",
+                cursor: "pointer",
               }}
             >
-              {addedProducts.includes(product.id) ? "Added" : "Add to Cart"}
+              Add to Cart
             </button>
           </li>
         ))}
