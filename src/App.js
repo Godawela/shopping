@@ -14,7 +14,7 @@ const App = () => {
     setTimeout(() => {
       setCartItems([...cartItems, product]);
       setLoading(false);
-    }, 1000);
+    }, 500);
   };
 
   // Remove item from cart
@@ -25,13 +25,17 @@ const App = () => {
     setTimeout(() => {
       setCartItems(cartItems.filter((cartItem) => cartItem.id !== product.id));
       setLoading(false);
-    }, 1000);
+    }, 500);
     } else {
       // Reduce the quantity by one
+      setLoading(true);
+    setTimeout(() => {
       const index = cartItems.findIndex((cartItem) => cartItem.id === product.id);
       const updatedCart = [...cartItems];
       updatedCart.splice(index, 1); // Remove one instance of the item
       setCartItems(updatedCart);
+      setLoading(false);
+    }, 500);
     }
   };
 
