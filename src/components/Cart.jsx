@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
+// Cart Component
 const Cart = ({ cartItems, removeFromCart }) => {
   // Group items by id and count occurrences
   const groupedItems = cartItems.reduce((acc, item) => {
@@ -15,6 +16,16 @@ const Cart = ({ cartItems, removeFromCart }) => {
   // Calculate total price
   const totalPrice = cartItems.reduce((total, product) => total + product.price, 0);
 
+  const handleRemove = (item) => {
+    if (item.quantity > 1) {
+      // Only reduce the quantity if it's more than 1
+      removeFromCart(item, false); // Send a flag that we're not removing completely
+    } else {
+      // If quantity is 1, remove the item completely
+      removeFromCart(item, true);
+    }
+  };
+
   return (
     <div className="cart" style={{ padding: "20px", border: "1px solid #ccc", borderRadius: "5px" }}>
       <h2>Shopping Cart</h2>
@@ -22,7 +33,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
         <p>Your cart is empty.</p>
       ) : (
         <ul style={{ listStyleType: "none", padding: 0 }}>
-          {groupedItems.map(item => (
+          {groupedItems.map((item) => (
             <li
               key={item.id}
               style={{
@@ -31,23 +42,25 @@ const Cart = ({ cartItems, removeFromCart }) => {
                 borderBottom: "1px solid #ccc",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <div>
                 <strong>{item.name}</strong> <br />
                 Rs. {item.price} x {item.quantity} <br />
-                <span style={{ fontWeight: "bold", color: "#555" }}>Total: Rs. {item.price * item.quantity}</span>
+                <span style={{ fontWeight: "bold", color: "#555" }}>
+                  Total: Rs. {item.price * item.quantity}
+                </span>
               </div>
               <button
-                onClick={() => removeFromCart(item)}
+                onClick={() => handleRemove(item)}
                 style={{
                   padding: "8px 12px",
                   backgroundColor: "#dc3545",
                   color: "white",
                   border: "none",
                   borderRadius: "5px",
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 Remove
