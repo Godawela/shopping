@@ -21,7 +21,11 @@ const App = () => {
   const removeFromCart = (product, isCompleteRemoval) => {
     if (isCompleteRemoval) {
       // Completely remove the item from the cart
+      setLoading(true);
+    setTimeout(() => {
       setCartItems(cartItems.filter((cartItem) => cartItem.id !== product.id));
+      setLoading(false);
+    }, 1000);
     } else {
       // Reduce the quantity by one
       const index = cartItems.findIndex((cartItem) => cartItem.id === product.id);

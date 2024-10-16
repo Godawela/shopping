@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import laptopImage from '../assets/laptop.jpeg';
 
 const products = [
-  { id: 1, name: "Laptop", price: 100000 },
+  { id: 1, name: "Laptop", price: 100000, imageUrl: laptopImage },
   { id: 2, name: "Smartphone", price: 200000 },
   { id: 3, name: "Headphones", price: 5000 },
 ];
@@ -32,6 +33,7 @@ const ProductList = ({ addToCart }) => {
             }}
           >
             <h3>{product.name}</h3>
+            <img src={product.imageUrl} alt={product.name} style={{ width: '100px', height: '100px' }} />
             <p>Price: Rs. {product.price}</p>
             <button
               onClick={() => handleAddToCart(product)}
