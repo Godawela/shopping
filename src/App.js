@@ -47,6 +47,8 @@ const App = () => {
         <ProductList addToCart={addToCart} />
         <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
       </div>
+
+      
     </div>
   );
 };

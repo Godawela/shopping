@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import laptopImage from '../assets/laptop.jpeg';
+import smartPhoneImage from '../assets/smart.jpg';
+import headPhoneImage from '../assets/head.jpg';
+
 
 const products = [
   { id: 1, name: "Laptop", price: 100000, imageUrl: laptopImage },
-  { id: 2, name: "Smartphone", price: 200000 },
-  { id: 3, name: "Headphones", price: 5000 },
+  { id: 2, name: "Smartphone", price: 200000, imageUrl: smartPhoneImage },
+  { id: 3, name: "Headphones", price: 5000, imageUrl: headPhoneImage},
 ];
 
 const ProductList = ({ addToCart }) => {
@@ -27,7 +30,8 @@ const ProductList = ({ addToCart }) => {
             key={product.id}
             style={{
               margin: "20px 0",
-              padding: "10px",
+              paddingLeft: "250px",
+              paddingBottom: "20px",
               border: "1px solid #ccc",
               borderRadius: "5px",
             }}
