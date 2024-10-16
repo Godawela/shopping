@@ -6,10 +6,15 @@ import './App.css';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // Add item to cart
   const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+    setLoading(true);
+    setTimeout(() => {
+      setCartItems([...cartItems, product]);
+      setLoading(false);
+    }, 1000);
   };
 
   // Remove item from cart
@@ -28,6 +33,11 @@ const App = () => {
 
   return (
     <div className="app">
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-message">Loading...</div>
+        </div>
+      )}
       <Header />
       <div style={{ display: "flex", justifyContent: "space-around", padding: "20px" }}>
         <ProductList addToCart={addToCart} />
