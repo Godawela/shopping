@@ -27,14 +27,14 @@ const App = () => {
   };
 
   return (
-    
-    <div className="app" style={{ display: "flex", justifyContent: "space-around", padding: "20px" }}>
+    <div className="app">
       <Header />
-      <ProductList addToCart={addToCart} />
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+      <div style={{ display: "flex", justifyContent: "space-around", padding: "20px" }}>
+        <ProductList addToCart={addToCart} />
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+      </div>
     </div>
   );
 };
-
 
 export default App;
