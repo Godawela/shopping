@@ -7,8 +7,8 @@ body {
 
 .header {
   display: flex;
-  justify-content: left;
-  align-items: center; 
+  justify-content: flex-start; /* Align logo and heading to the left */
+  align-items: center;
   background-color: #0d084a;
   color: white;
   padding: 10px 20px;
@@ -22,22 +22,18 @@ body {
   margin-right: 1rem;
 }
 
-
-
 .nav {
   display: flex;
-  justify-content: right; 
   align-items: center;
+  margin-left: auto; /* Push the nav to the right corner */
 }
 
 .nav a {
   color: white;
   text-decoration: none;
   padding: 10px;
-  margin: 0 15px; /* Reduce the margin between the links */
+  margin: 0 15px; /* Adjust margin between links */
 }
-
-
 
 .nav a:hover {
   color: #e0e0e0;
